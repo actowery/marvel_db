@@ -6,9 +6,9 @@
 		<h2>City Details <a href="/edit/city/{{city_data.city.id}}">Edit</a> <a href="/delete/city/{{city_data.city.id}}">Delete</a></h2>
 		<p><strong>Name:</strong> {{city_data.city.name}}</p>
 		<p><strong>Persons in City:</strong>
-		{{#if city_data.persons}}
+		{{#if city_data.person}}
 			<ul>
-				{{#each city_data.persons}}
+				{{#each city_data.person}}
 					<li><a href="/view/person/{{id}}">{{name}} Villain: {{villain}}</a></li>
 				{{/each}}
 			</ul>
@@ -17,9 +17,9 @@
 		{{/if}}
 		</p>
 		<p><strong>Incidents that Occured in this City:</strong>
-		{{#if city_data.incidents}}
+		{{#if city_data.incident}}
 			<ul>
-				{{#each city_data.incidents}}
+				{{#each city_data.incident}}
 					<li><a href="/view/incident/{{id}}">{{date}} {{description}}</a></li>
 				{{/each}}
 			</ul>
