@@ -1,0 +1,28 @@
+{{#if error_message}}
+	<h1>Power Not Found</h1>
+{{else}}
+	{{#if power.power_id}}
+		<h2>Power Details <a href="/edit/power/{{power.power_id}}">Edit</a> <a href="/delete/power/{{power.power_id}}">Delete</a></h2>
+		<p><strong>Description</strong> {{power.power_name}}</p>
+
+		<br>
+		<h3>Add Power to Person</h3>
+		{{#if power.persons_without_current_power}}
+			<form action="/add/power/{{power.power_id}}/person" method="POST">
+				<div class="form-group">
+					<label for="person">Person</label>
+					<select class="form-control" id="person" name="person">
+						{{#each power.persons_without_current_power}}
+							<option value="{{sp_id}}">{{person_name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<button type="submit" class="btn btn-default">Add Power to Person</button>
+			</form>
+		{{else}}
+			<p>There are no persons available for this power.</p>
+		{{/if}}
+	{{else}}
+		<h1>Power Not Found</h1>
+	{{/if}}
+{{/if}}

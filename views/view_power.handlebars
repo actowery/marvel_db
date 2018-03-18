@@ -1,0 +1,27 @@
+{{#if error_message}}
+	<p>Error Loading Content</p>
+	{{error_message}}
+
+{{else}}
+	<h3>Powers <a href="/add/power">Add New</a></h3>
+	{{#if power}}
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Power Description</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{{#each power}}
+					<tr>
+						<td>{{description}}</td>
+
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<p>No powers currently in database. Click the link above to add one</p>
+	{{/if}}
+{{/if}}

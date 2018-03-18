@@ -1,0 +1,43 @@
+{{#if error_message}}
+	<p>Error Loading Content</p>
+	{{error_message}}
+
+{{else}}
+	<h3>Incidents <a href="/add/incident">Add New</a></h3>
+	{{#if incidents}}
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Incident Date</th>
+					<th>Description</th>
+					<th>City</th>
+					<th>Person(s) Involved</th>
+					<th>Collateral damage cost (USD)</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each incidents}}
+					<tr>
+						<td>{{incident_date}}</td>
+						<td>{{incident_description}}</td>
+						<td><a href="/view/city/{{city_id}}">{{city_name}}</a></td>
+						<td>
+							{{each persons}}
+							<a href="/view/person/{{sp_id}}">{{name}} Villain? {{villain}}</a><br>
+							{{/each}}
+						</td>
+						<td>{{incident_collateral}}</td>
+						<td><a href="/view/incident/{{in_id}}">View</a></td>
+						<td><a href="/edit/incident/{{in_id}}">Edit</a></td>
+						<td><a href="/delete/incident/{{in_id}}">Delete</a></td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<p>No incidents, yet...</p>
+	{{/if}}
+{{/if}}

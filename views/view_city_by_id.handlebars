@@ -1,0 +1,34 @@
+{{#if error_message}}
+	<h2>{{error_message}}</h2>
+	<p><a href="/view/city">Go back</a></p>
+{{else}}
+	{{#if city_data.city}}
+		<h2>City Details <a href="/edit/city/{{city_data.city.id}}">Edit</a> <a href="/delete/city/{{city_data.city.id}}">Delete</a></h2>
+		<p><strong>Name:</strong> {{city_data.city.name}}</p>
+		<p><strong>Persons in City:</strong>
+		{{#if city_data.persons}}
+			<ul>
+				{{#each city_data.persons}}
+					<li><a href="/view/person/{{id}}">{{name}} Villain: {{villain}}</a></li>
+				{{/each}}
+			</ul>
+		{{else}}
+			There are currently no persons protecting/terrorizing this city.
+		{{/if}}
+		</p>
+		<p><strong>Incidents that Occured in this City:</strong>
+		{{#if city_data.incidents}}
+			<ul>
+				{{#each city_data.incidents}}
+					<li><a href="/view/incident/{{id}}">{{date}} {{description}}</a></li>
+				{{/each}}
+			</ul>
+		{{else}}
+			There are currently no incidents logged for this city.
+		{{/if}}
+		</p>
+
+	{{else}}
+		<h1>City Not Found</h1>
+	{{/if}}
+{{/if}}

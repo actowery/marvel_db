@@ -1,0 +1,33 @@
+{{#if error_message}}
+	<p>Error Loading Content</p>
+	{{error_message}}
+{{else}}
+	<h3>Citys <a href="/add/city">Add New</a></h3>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>City Name</th>
+				<th>View</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each citys}}
+				<tr>
+					<td>{{name}}</td>
+					<td><a href="/view/city/{{id}}">View</a></td>
+					<td><a href="/edit/city/{{id}}">Edit</a></td>
+					<td><a href="/delete/city/{{id}}">Delete</a></td>
+				</tr>
+			{{/each}}
+				<tr>
+					<td>Zenn-La</td>
+					<td><a href="/view/city/1">View</a></td>
+					<td><a href="/edit/city/1">Edit</a></td>
+					<td>N/A <strong style="color:red;">*</strong></td>
+				</tr>
+		</tbody>
+	</table>
+	<p><strong style="color:red;"> This default city exists so that incidents and persons can be created from the start.  Deletion Forbidden.</strong></p>
+{{/if}}
