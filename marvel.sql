@@ -14,7 +14,7 @@ CREATE TABLE superpower (
 CREATE TABLE city (
     `ID` INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR( 225  ) NOT NULL UNIQUE,
-    `size` BIGINT,
+    `citysize` BIGINT,
     `population` BIGINT
 ) ENGINE = INNODB
 
@@ -65,7 +65,7 @@ CREATE TABLE person_incident (
 ) ENGINE = INNODB;
 
 --------Database Entries---------------------------
-INSERT INTO `city` ( `name`, `size`, `population` )
+INSERT INTO `city` ( `name`, `citysize`, `population` )
 VALUES ( 'New York City', '302', '8537673' );
 
 INSERT INTO `person` (`name`,`real_name`,`origin`,`villain`,`sp_CityID`)

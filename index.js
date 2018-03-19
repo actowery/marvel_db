@@ -124,7 +124,7 @@ app.get('/add/city', function(request, response) {
 app.post('/add/city', function(request, response) {
 	var city = {
 		name:request.body.city_name,
-		size:request.body.city_size,
+		citysize:request.body.city_citysize,
 		population:request.body.city_population
 		};
 
@@ -167,7 +167,7 @@ app.get('/edit/city/:id', function(request, response) {
 app.post('/edit/city/:id', function(request, response) {
 	var city = {
 		name:request.body.city_name,
-		size:request.body.city_size,
+		citysize:request.body.city_citysize,
 		population:request.body.city_population
 	};
 
