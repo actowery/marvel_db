@@ -15,7 +15,7 @@ exports.viewIncidentQ += "ID AS in_ID, ";
 exports.viewIncidentQ += "description AS incident_description, ";
 exports.viewIncidentQ += "collateral AS incident_collateral, ";
 exports.viewIncidentQ += "city.ID AS city_ID, ";
-exports.viewIncidentQ += "city.name AS city_name, ";
+exports.viewIncidentQ += "city.name AS city_name ";
 exports.viewIncidentQ += "FROM incident ";
 exports.viewIncidentQ += "INNER JOIN city ON city.ID = incident.in_CityID ";
 
