@@ -156,6 +156,7 @@ app.get('/edit/city/:id', function(request, response) {
 	connection.query(cityQById, function(error, rows, fields) {
 		var city_data = {
 			city:rows[0]
+			person:rows[1]
 		};
 
 		response.render('edit_city_by_id', city_data);
