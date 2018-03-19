@@ -1,6 +1,6 @@
 {{#if incident}}
 	<h2>Edit Incident</h2>
-	<form action="/edit/incident/{{incident.id}}" method="POST">
+	<form action="/edit/incident/{{incident.ID}}" method="POST">
 		<div class="form-group">
 			<label for="name">Incident Description</label>
 			<input type="text" class="form-control" id="incident_description" name="incident_description" value="{{incident.description}}">

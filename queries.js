@@ -189,7 +189,7 @@ exports.deletePowerQ = "DELETE FROM superpower WHERE id = ";
     Name: viewPowerViewQ
     Description: to display superpower list
 */
-exports.viewPowerViewQ  = "SELECT superpower.id AS superpower_id, "
+exports.viewPowerViewQ  = "SELECT superpower.ID AS superpower_id, "
 exports.viewPowerViewQ += "superpower.spow;"
 
 /*
@@ -197,9 +197,9 @@ exports.viewPowerViewQ += "superpower.spow;"
     Description: returns superpower by id
 */
 exports.viewPowerByIdQ  = "SELECT ";
-exports.viewPowerByIdQ += "superpower.id, ";
+exports.viewPowerByIdQ += "superpower.ID, ";
 exports.viewPowerByIdQ += "superpower.spow ";
-exports.viewPowerByIdQ += "WHERE superpower.id = ";
+exports.viewPowerByIdQ += "WHERE superpower.ID = ";
 
 /*
     Q: updatePowerQ
@@ -218,10 +218,10 @@ exports.removePowerFromCourseQ = "DELETE FROM person_superpower WHERE sp_id = ? 
     Description:  displays superpowers by person
 */
 exports.viewPowersByCourseQ =  "SELECT ";
-exports.viewPowersByCourseQ += "superpower.id AS superpower_id, ";
+exports.viewPowersByCourseQ += "superpower.ID AS superpower_id, ";
 exports.viewPowersByCourseQ += "superpower.spow AS superpower_superpower, ";
 exports.viewPowersByCourseQ += "FROM superpower ";
-exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.id ";
+exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.ID ";
 
 /*
     Name: PersonsWithoutParticularPowerQ
@@ -230,11 +230,11 @@ exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpowe
 exports.personsWithoutParticularPowerQ = "SELECT person_table.sp_id, person_table.person_name ";
 exports.personsWithoutParticularPowerQ += "FROM (SELECT id AS sp_id, name AS person_name ";
 exports.personsWithoutParticularPowerQ += "FROM person) as person_table ";
-exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT superpower.id AS superpower_id, superpower.spow AS superpower_superpower, person_superpower.sp_id AS sp_id ";
+exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT superpower.ID AS superpower_id, superpower.spow AS superpower_superpower, person_superpower.sp_id AS sp_id ";
 exports.personsWithoutParticularPowerQ += "FROM superpower ";
 exports.personsWithoutParticularPowerQ += "INNER JOIN person_superpower ";
-exports.personsWithoutParticularPowerQ += "ON person_superpower.superpower_id = superpower.id ";
-exports.personsWithoutParticularPowerQ += "WHERE superpower.id = ?) as superpower_table ";
+exports.personsWithoutParticularPowerQ += "ON person_superpower.superpower_id = superpower.ID ";
+exports.personsWithoutParticularPowerQ += "WHERE superpower.ID = ?) as superpower_table ";
 exports.personsWithoutParticularPowerQ += "ON superpower_table.sp_id = person_table.sp_id ";
 exports.personsWithoutParticularPowerQ += "WHERE superpower_id IS NULL ";
 exports.personsWithoutParticularPowerQ += "ORDER BY person_table.person_name;";
