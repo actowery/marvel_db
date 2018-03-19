@@ -320,7 +320,7 @@ app.get('/add/superpower', function(request, response) {
 });
 app.post('/add/superpower', function(request, response) {
 	var superpower = {
-		description:request.body.description
+		spow:request.body.spow
 	};
 
 	connection.query(queries.createPowerQ, superpower, function(error, result) {
