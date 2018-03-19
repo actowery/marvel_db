@@ -1,7 +1,6 @@
 {{#if error_message}}
 	<p>Error Loading Content</p>
 	{{error_message}}
-
 {{else}}
 	<h3>Persons <a href="/add/person">Add New</a></h3>
 	<table class="table table-bordered table-hover">
@@ -16,10 +15,10 @@
 		<tbody>
 			{{#each person}}
 				<tr>
-					<td>{{name}}</td>			
-					<td><a href="/view/person/{{this.ID}}">View</a></td>
-					<td><a href="/edit/person/{{this.ID}}">Edit</a></td>
-					<td><a href="/delete/person/{{this.ID}}">Delete</a></td>
+					<td>{{real_name}}</td>			
+					<td><a href="/view/person/{{ID}}">View</a></td>
+					<td><a href="/edit/person/{{ID}}">Edit</a></td>
+					<td><a href="/delete/person/{{ID}}">Delete</a></td>
 				</tr>
 			{{/each}}
 			<tr>
