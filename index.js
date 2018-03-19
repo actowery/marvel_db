@@ -223,8 +223,8 @@ app.post('/add/person', function(request, response) {
 		real_name:request.body.real_name,
 		origin:request.body.origin,
 		villain:request.body.villain,
-		city:request.body.city,
-		superpower:request.body.superpower
+		// city:request.body.city,
+		// superpower:request.body.superpower
 	};
 
 	var addPersonQ = queries.addPersonQ;
