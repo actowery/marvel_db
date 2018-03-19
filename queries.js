@@ -11,14 +11,11 @@ exports.allIncidents = "SELECT * FROM incident";
     Description:  Returns all incidents with the main subjects, like who was responsible, city, and collateral
 */
 exports.viewIncidentQ =  "SELECT ";
-exports.viewIncidentQ += "incident.ID AS in_ID, ";
-exports.viewIncidentQ += "incident.description AS incident_description, ";
-exports.viewIncidentQ += "incident.collateral AS incident_collateral, ";
+exports.viewIncidentQ += "ID AS in_ID, ";
+exports.viewIncidentQ += "description AS incident_description, ";
+exports.viewIncidentQ += "collateral AS incident_collateral, ";
 exports.viewIncidentQ += "city.ID AS city_ID, ";
 exports.viewIncidentQ += "city.name AS city_name, ";
-exports.viewIncidentQ += "person.ID AS sp_id, ";
-exports.viewIncidentQ += "person.name AS person_name, ";
-exports.viewIncidentQ += "person.real_name AS person_real_name ";
 exports.viewIncidentQ += "FROM incident ";
 exports.viewIncidentQ += "INNER JOIN city ON city.ID = incident.in_CityID ";
 
