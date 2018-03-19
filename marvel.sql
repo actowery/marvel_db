@@ -31,8 +31,6 @@ FOREIGN KEY (  `sp_CityID` ) REFERENCES city(  `ID` )
 CREATE TABLE incident (
     `ID` INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
     `description` TEXT NOT NULL,
-    `collateral` BIGINT,
-    `date` DATE NOT NULL,
     `good_wins` BOOL,
     `in_CityID` INT( 11 ),
     FOREIGN KEY ( `in_CityID` ) REFERENCES city( `ID` )
@@ -71,7 +69,7 @@ VALUES ( 'New York City', '302', '8537673' );
 INSERT INTO `person` (`name`,`real_name`,`origin`,`villain`,`sp_CityID`)
 VALUES ( 'Spider-Man','Peter Parker','Bitten by a mutated spider receiving superhuman, spider-themed abilities.','false',(SELECT `ID` from `city` WHERE name = 'New York City')), ('Dr. Octopus','Otto Octavious','Experimental mechanical arm implant made him crazy.','true', (SELECT `ID` from `city` WHERE name = 'New York City'));
 
-INSERT INTO `superpower` ( `pow`)
+INSERT INTO `superpower` ( `spow`)
 VALUES ( 'Super Strength' ), ( 'Wall Crawl' ), ( 'Web Shooting' ), ( 'Spider Sense' ), ( 'Intelligence' ), ( 'Mechanical Arms' );
 
 INSERT INTO `person_superpower` ( `sp_ID`, `superpower_ID` )
@@ -95,9 +93,9 @@ VALUES (
     (SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
     'Nemesis' );
 
-INSERT INTO `incident` ( `description`,`collateral`,`date`,`good_wins`,`in_CityID` )
+INSERT INTO `incident` ( `description`,`good_wins`,`in_CityID` )
 VALUES (
-    'Rumble in NYC - fight between Spider-Man and Dr. Octopus', '1000000','1999-03-01','true',
+    'Rumble in NYC - fight between Spider-Man and Dr. Octopus','true',
     (SELECT `ID` FROM `city` WHERE name-'New York City')
 );
 

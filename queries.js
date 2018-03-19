@@ -6,6 +6,7 @@
 */
 exports.allIncidents = "SELECT * FROM incident";
 
+exports.joinIncidentAndPerson = "SELECT id, description, person_incident.sp_ID FROM incident INNER JOIN incident on incident.id = person_incident.sp_ID";
 /*
     Name:  viewIncidentQ
     Description:  Returns all incidents with the main subjects, like who was responsible, city, and collateral
