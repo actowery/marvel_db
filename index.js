@@ -291,7 +291,7 @@ app.get('/view/person', function(request, response) {
 
 //view person by id
 app.get('/view/person/:id', function(request, response) {
-	var viewPersonQ = queries.allPersons+" WHERE person.ID =" + mysql.escape(request.params.id) +";";
+	var viewPersonQ = queries.allPersons+" WHERE id =" + mysql.escape(request.params.id) +";";
 	// var viewPersonIncidentsQ = queries.allIncidents + " WHERE person.ID = " + mysql.escape(request.params.id) + " ORDER BY date;";
 	// var viewPersonPowersQ = queries.allPowers + " WHERE person.ID = " + mysql.escape(request.params.id) + " ORDER BY name;";
 
