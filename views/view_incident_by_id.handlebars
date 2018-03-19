@@ -4,10 +4,8 @@
 {{else}}
 	{{#if incident_data.incident}}
 		<h2>Incident Details <a href="/edit/incident/{{incident_data.incident.in_id}}">Edit</a> <a href="/delete/incident/{{incident_data.incident.in_id}}">Delete</a></h2>
-		<p><strong>Date:</strong> {{incident_data.incident.incident_date}}</p>
 		<p><strong>Incident Description:</strong> {{incident_data.incident.incident_description}}</p>
 		<p><strong>City: </strong> <a href="/view/city/{{incident_data.incident.in_CityID}}"> {{incident_data.incident.city_name}}</a></p>
-		<p><strong>Collateral Damage (USD)::</strong>{{incident_data.incident.incident_collateral}}</p>
 		<p><strong>Person(s) involved:</strong> 
 		{{each persons}}
 		<a href="/view/person/{{incident_data.incident.sp_ID}}"> {{incident_data.incident.person_name}} Villain?: {{incident_data.incident.person_villain}}</a> &nbsp;
