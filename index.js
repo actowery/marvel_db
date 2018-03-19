@@ -190,8 +190,8 @@ app.get('/view/city', function(request, response) {
 //view by id
 app.get('/view/city/:id', function(request, response) {
 	var viewCityQ = queries.allCitys + " WHERE id = " + mysql.escape(request.params.ID) + "; ";
-	var viewPersonsByCity = queries.allPersons + " WHERE id = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
-	var viewIncidentsByCity = queries.allIncidents + " WHERE id = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
+	var viewPersonsByCity = queries.allPersons + " WHERE city = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
+	var viewIncidentsByCity = queries.allIncidents + " WHERE city = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
 
 	connection.query(viewCityQ + viewPersonsByCity + viewIncidentsByCity, function(error, rows, fields) {
 		var city_data = {
