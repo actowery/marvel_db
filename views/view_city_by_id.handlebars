@@ -3,13 +3,13 @@
 	<p><a href="/view/city">Go back</a></p>
 {{else}}
 	{{#if city_data.city}}
-		<h2>City Details <a href="/edit/city/{{city_data.city.id}}">Edit</a> <a href="/delete/city/{{city_data.city.id}}">Delete</a></h2>
+		<h2>City Details <a href="/edit/city/{{city_data.city.ID}}">Edit</a> <a href="/delete/city/{{city_data.city.ID}}">Delete</a></h2>
 		<p><strong>Name:</strong> {{city_data.city.name}}</p>
 		<p><strong>Persons in City:</strong>
 		{{#if city_data.person}}
 			<ul>
 				{{#each city_data.person}}
-					<li><a href="/view/person/{{id}}">{{name}} Villain: {{villain}}</a></li>
+					<li><a href="/view/person/{{ID}}">{{name}} Villain: {{villain}}</a></li>
 				{{/each}}
 			</ul>
 		{{else}}
@@ -20,7 +20,7 @@
 		{{#if city_data.incident}}
 			<ul>
 				{{#each city_data.incident}}
-					<li><a href="/view/incident/{{id}}">{{date}} {{description}}</a></li>
+					<li><a href="/view/incident/{{ID}}">{{date}} {{description}}</a></li>
 				{{/each}}
 			</ul>
 		{{else}}

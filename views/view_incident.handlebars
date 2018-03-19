@@ -4,7 +4,7 @@
 
 {{else}}
 	<h3>Incidents <a href="/add/incident">Add New</a></h3>
-	{{#if incidents}}
+	{{#if incident}}
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -19,25 +19,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each incidents}}
+				{{#each incident}}
 					<tr>
-						<td>{{incident_date}}</td>
-						<td>{{incident_description}}</td>
-						<td><a href="/view/city/{{city_id}}">{{city_name}}</a></td>
+						<td>{{date}}</td>
+						<td>{{description}}</td>
+						<td><a href="/view/city/{{in_CityID}}">{{city_name}}</a></td>
 						<td>
-							{{each persons}}
-							<a href="/view/person/{{sp_id}}">{{name}} Villain? {{villain}}</a><br>
+							{{each person}}
+							<a href="/view/person/{{ID}}">{{name}} Villain? {{villain}}</a><br>
 							{{/each}}
 						</td>
-						<td>{{incident_collateral}}</td>
-						<td><a href="/view/incident/{{in_id}}">View</a></td>
-						<td><a href="/edit/incident/{{in_id}}">Edit</a></td>
-						<td><a href="/delete/incident/{{in_id}}">Delete</a></td>
+						<td>{{collateral}}</td>
+						<td><a href="/view/incident/{{ID}}">View</a></td>
+						<td><a href="/edit/incident/{{ID}}">Edit</a></td>
+						<td><a href="/delete/incident/{{ID}}">Delete</a></td>
 					</tr>
 				{{/each}}
 			</tbody>
 		</table>
 	{{else}}
-		<p>No incidents, yet...</p>
+		<p>No incident, yet...</p>
 	{{/if}}
 {{/if}}

@@ -102,8 +102,8 @@ app.get('/view/incident', function(request, response) {
 
 //get incident by id
 app.get('/view/incident/:id', function(request, response) {
-	var viewIncidentQ = queries.viewIncidentQ + " WHERE incident.id = " + mysql.escape(request.params.id) + "; ";
-	var viewPersonsByIncidentQ = queries.viewPersonsByIncidentQ + " WHERE person_incident.in_id = " + mysql.escape(request.params.id) + " ORDER BY person_name; ";
+	var viewIncidentQ = queries.viewIncidentQ + " WHERE incident.ID = " + mysql.escape(request.params.id) + "; ";
+	var viewPersonsByIncidentQ = queries.viewPersonsByIncidentQ + " WHERE person_incident.in_ID = " + mysql.escape(request.params.id) + " ORDER BY person_name; ";
 
 	connection.query(viewIncidentQ + viewPersonsByIncidentQ, function(error, rows, fields) {
 		var incident_data = {
@@ -190,8 +190,8 @@ app.get('/view/city', function(request, response) {
 //view by id
 app.get('/view/city/:id', function(request, response) {
 	var viewCityQ = queries.allCitys + " WHERE id = " + mysql.escape(request.params.id) + "; ";
-	var viewPersonsByCity = queries.allPersons + " WHERE id = " + mysql.escape(request.params.id) + " ORDER BY name; ";
-	var viewIncidentsByCity = queries.allIncidents + " WHERE id = " + mysql.escape(request.params.id) + " ORDER BY name; ";
+	var viewPersonsByCity = queries.allPersons + " WHERE id = " + mysql.escape(request.params.id) + " ORDER BY id; ";
+	var viewIncidentsByCity = queries.allIncidents + " WHERE id = " + mysql.escape(request.params.id) + " ORDER BY id; ";
 
 	connection.query(viewCityQ + viewPersonsByCity + viewIncidentsByCity, function(error, rows, fields) {
 		var city_data = {

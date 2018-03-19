@@ -8,10 +8,6 @@
 		<thead>
 			<tr>
 				<th>Alias</th>
-				<th>Real Name</th>
-				<th>Villain?</th>
-				<th>Power</th>
-				<th>Origin Story</th>
 				<th>City</th>
 				<th>View</th>
 				<th>Edit</th>
@@ -21,24 +17,15 @@
 		<tbody>
 			{{#each person}}
 				<tr>
-					<td>{{name}}</td>
-					<td>{{real_name}}</td>
-					<td>{{villain}}</td>
-					{{!--city_id is for cityid within person, etc etc. i didnt see it in my notes and i didn't know how you wanted this please check over all these id key calls--}}
-					<td><a href="/view/power/{{power_id}}">{{power}}</a></td>
-					<td>{{origin}}</td>					
-					<td><a href="/view/city/{{city_id}}">{{name}}</a></td>
-					<td><a href="/view/person/{{sp_id}}">View</a></td>
-					<td><a href="/edit/person/{{sp_id}}">Edit</a></td>
-					<td><a href="/delete/person/{{sp_id}}">Delete</a></td>
+					<td>{{name}}</td>			
+					<td><a href="/view/city/{{sp_CityID}}">{{name}}</a></td>
+					<td><a href="/view/person/{{ID}}">View</a></td>
+					<td><a href="/edit/person/{{ID}}">Edit</a></td>
+					<td><a href="/delete/person/{{ID}}">Delete</a></td>
 				</tr>
 			{{/each}}
 			<tr>
 				<td>Spider-Man</td>
-				<td>Peter Parker</td>
-				<td>0</td>
-				<td>Spider</td>
-				<td>Bitten by a spider and got powers</td>
 				<td><a href="/view/city/1">New York City</a></td>
 				<td><a href="/view/person/1">View</a></td>
 				<td><a href="/edit/person/1">Edit<a/></td>
