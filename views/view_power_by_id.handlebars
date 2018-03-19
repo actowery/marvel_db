@@ -3,7 +3,7 @@
 {{else}}
 	{{#if power.power_id}}
 		<h2>Power Details <a href="/edit/power/{{power.power_id}}">Edit</a> <a href="/delete/power/{{power.power_id}}">Delete</a></h2>
-		<p><strong>Description</strong> {{power.power_name}}</p>
+		<p><strong>Description</strong> {{power.power_pow}}</p>
 
 		<br>
 		<h3>Add Power to Person</h3>
@@ -13,7 +13,7 @@
 					<label for="person">Person</label>
 					<select class="form-control" id="person" name="person">
 						{{#each power.persons_without_current_power}}
-							<option value="{{sp_id}}">{{person_name}}</option>
+							<option value="{{sp_ID}}">{{person_name}}</option>
 						{{/each}}
 					</select>
 				</div>

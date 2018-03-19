@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `incident`;
 
 CREATE TABLE power (
     `ID` INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
-    `power` VARCHAR( 225  ) NOT NULL
+    `pow` VARCHAR( 225  ) NOT NULL
 ) ENGINE = INNODB
 
 CREATE TABLE city (
@@ -71,23 +71,23 @@ VALUES ( 'New York City', '302', '8537673' );
 INSERT INTO `person` (`name`,`real_name`,`origin`,`villain`,`sp_CityID`)
 VALUES ( 'Spider-Man','Peter Parker','Bitten by a mutated spider receiving superhuman, spider-themed abilities.','false',(SELECT `ID` from `city` WHERE name = 'New York City')), ('Dr. Octopus','Otto Octavious','Experimental mechanical arm implant made him crazy.','true', (SELECT `ID` from `city` WHERE name = 'New York City'));
 
-INSERT INTO `power` ( `power`)
+INSERT INTO `power` ( `pow`)
 VALUES ( 'Super Strength' ), ( 'Wall Crawl' ), ( 'Web Shooting' ), ( 'Spider Sense' ), ( 'Intelligence' ), ( 'Mechanical Arms' );
 
 INSERT INTO `person_power` ( `sp_ID`, `power_ID` )
 VALUES ( 
     (SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE power='Super Strength')),
+    (SELECT `ID` FROM `power` WHERE pow='Super Strength')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE power='Wall Crawl')),
+    (SELECT `ID` FROM `power` WHERE pow='Wall Crawl')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE power='Web Shooting')),
+    (SELECT `ID` FROM `power` WHERE pow='Web Shooting')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE power='Intelligence')),
+    (SELECT `ID` FROM `power` WHERE pow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `power` WHERE power='Intelligence')),
+    (SELECT `ID` FROM `power` WHERE pow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `power` WHERE power='Mechanical Arms'));
+    (SELECT `ID` FROM `power` WHERE pow='Mechanical Arms'));
 
 INSERT INTO `person_person` ( `sp1_ID`,`sp2_ID`,`relationship` )
 VALUES ( 
