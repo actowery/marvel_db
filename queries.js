@@ -142,10 +142,10 @@ exports.updatePersonQ = "UPDATE person SET ? WHERE id = ?;";
     Name: viewPersonViewQ
     Description:  helps render persons
 */
-exports.viewPersonViewQ  = "SELECT person.ID AS sp_id, person.name, person.real_name, person.origin, person.villain, city.ID AS c_id, city.name FROM person ";
-exports.viewPersonViewQ += "INNER JOIN city ON person.sp_CityID = city.ID ";
+exports.viewPersonViewQ  = "SELECT person.ID AS sp_id, person.name, person.real_name, person.origin, person.villain, city.ID AS c_id, city.name as city_name FROM person ";
+exports.viewPersonViewQ += "INNER JOIN city ON person.sp_CityID = c_id ";
 exports.viewPersonViewQ += "WHERE person.ID <> 1 "
-exports.viewPersonViewQ += "ORDER BY person.name, city.name;";
+exports.viewPersonViewQ += "ORDER BY person.name;";
 
 /*
     Name:  viewPersonQ
