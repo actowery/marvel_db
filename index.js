@@ -93,7 +93,7 @@ app.post('/edit/incident/:id', function(request, response) {
 
 //get all incidents tabulated
 app.get('/view/incident', function(request, response) {
-	var viewIncidentQ = queries.viewIncidentQ + " ORDER BY incident.date;";
+	var viewIncidentQ = queries.viewIncidentQ + ";";
 
 	connection.query(viewIncidentQ, function(error, rows, fields) {
 		response.render('view_incident', {incident:rows, error_message:error});
