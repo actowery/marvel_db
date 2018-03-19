@@ -1,7 +1,7 @@
 {{#if error_message}}
 	<h1>Power Not Found</h1>
 {{else}}
-	{{#if superpower.superpower_id}}
+	{{#if superpower_data}}
 		<h2>Power Details <a href="/edit/superpower/{{superpower.superpower_id}}">Edit</a> <a href="/delete/superpower/{{superpower.superpower_id}}">Delete</a></h2>
 		<p><strong>Description</strong> {{superpower.superpower_pow}}</p>
 
