@@ -209,7 +209,7 @@ app.get('/add/person', function(request, response) {
 	var allCitysQ = queries.allCitys + ";";
 	connection.query(allCitysQ, function(error, rows, fields) {
 		var city_data = {
-			city:rows,
+			city:rows
 		};
 
 		response.render('add_person', {form_data:city_data, error_message:error});
