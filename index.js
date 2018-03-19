@@ -222,7 +222,7 @@ app.post('/add/person', function(request, response) {
 		name:request.body.name,
 		real_name:request.body.real_name,
 		origin:request.body.origin,
-		villain:request.body.villain,
+		villain:request.body.villain
 		// city:request.body.city,
 		// superpower:request.body.superpower
 	};
