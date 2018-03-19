@@ -107,7 +107,7 @@ app.get('/view/incident/:id', function(request, response) {
 
 	connection.query(viewIncidentQ + viewPersonsByIncidentQ, function(error, rows, fields) {
 		var incident_data = {
-			incident:rows[0],
+			incident:rows[0][0],
 			person:rows[1]
 		};
 
