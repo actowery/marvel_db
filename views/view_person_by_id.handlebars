@@ -2,7 +2,7 @@
 	<h2>{{error_message}}</h2>
 	<p><a href="/view/person">Back to persons..</a></p>
 {{else}}
-	{{#if person_data.person}}
+	{{#if person}}
 		<h2>Person Details <a href="/edit/person/{{person_data.person.sp_id}}">Edit</a> <a href="/delete/person/{{person_data.person.sp_id}}">Delete</a></h2>
 		<p><strong>Alias: </strong>{{person_data.person.person_name}}</p>
 		<p><strong>Real Name: </strong>{{person_data.person.person_real_name}}</p>
