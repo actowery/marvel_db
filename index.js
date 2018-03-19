@@ -365,7 +365,7 @@ app.get('/edit/superpower/:id', function(request, response) {
 //contains data for editing of superpower
 app.post('/edit/superpower/:id', function(request, response) {
 	var superpower = {
-		description:request.body.description,
+		spow:request.body.spow,
 
 	};
 
@@ -381,7 +381,7 @@ app.get('/remove/superpower/:superpower_id/person/:sp_id', function(request, res
 	});
 });
 
-//displays a table of superpower descriptions
+//displays a table of superpower spows
 app.get('/view/superpower', function(request, response) {
 	connection.query(queries.viewPowerViewQ, function(error, rows, fields) {
 		response.render('view_superpower', {superpower:rows, error_message:error});
