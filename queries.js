@@ -190,7 +190,7 @@ exports.deletePowerQ = "DELETE FROM superpower WHERE id = ";
     Description: to display superpower list
 */
 exports.viewPowerViewQ  = "SELECT superpower.id AS superpower_id, "
-exports.viewPowerViewQ += "superpower.pow;"
+exports.viewPowerViewQ += "superpower.spow;"
 
 /*
     Name: viewPowerById
@@ -198,7 +198,7 @@ exports.viewPowerViewQ += "superpower.pow;"
 */
 exports.viewPowerByIdQ  = "SELECT ";
 exports.viewPowerByIdQ += "superpower.id, ";
-exports.viewPowerByIdQ += "superpower.pow ";
+exports.viewPowerByIdQ += "superpower.spow ";
 exports.viewPowerByIdQ += "WHERE superpower.id = ";
 
 /*
@@ -219,7 +219,7 @@ exports.removePowerFromCourseQ = "DELETE FROM person_superpower WHERE sp_id = ? 
 */
 exports.viewPowersByCourseQ =  "SELECT ";
 exports.viewPowersByCourseQ += "superpower.id AS superpower_id, ";
-exports.viewPowersByCourseQ += "superpower.pow AS superpower_superpower, ";
+exports.viewPowersByCourseQ += "superpower.spow AS superpower_superpower, ";
 exports.viewPowersByCourseQ += "FROM superpower ";
 exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.id ";
 
@@ -230,7 +230,7 @@ exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpowe
 exports.personsWithoutParticularPowerQ = "SELECT person_table.sp_id, person_table.person_name ";
 exports.personsWithoutParticularPowerQ += "FROM (SELECT id AS sp_id, name AS person_name ";
 exports.personsWithoutParticularPowerQ += "FROM person) as person_table ";
-exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT superpower.id AS superpower_id, superpower.pow AS superpower_superpower, person_superpower.sp_id AS sp_id ";
+exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT superpower.id AS superpower_id, superpower.spow AS superpower_superpower, person_superpower.sp_id AS sp_id ";
 exports.personsWithoutParticularPowerQ += "FROM superpower ";
 exports.personsWithoutParticularPowerQ += "INNER JOIN person_superpower ";
 exports.personsWithoutParticularPowerQ += "ON person_superpower.superpower_id = superpower.id ";
