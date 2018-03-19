@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `incident`;
 
 CREATE TABLE superpower (
     `ID` INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
-    `pow` VARCHAR( 225  ) NOT NULL
+    `spow` VARCHAR( 225  ) NOT NULL
 ) ENGINE = INNODB
 
 CREATE TABLE city (
@@ -77,17 +77,17 @@ VALUES ( 'Super Strength' ), ( 'Wall Crawl' ), ( 'Web Shooting' ), ( 'Spider Sen
 INSERT INTO `person_superpower` ( `sp_ID`, `superpower_ID` )
 VALUES ( 
     (SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Super Strength')),
+    (SELECT `ID` FROM `superpower` WHERE spow='Super Strength')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Wall Crawl')),
+    (SELECT `ID` FROM `superpower` WHERE spow='Wall Crawl')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Web Shooting')),
+    (SELECT `ID` FROM `superpower` WHERE spow='Web Shooting')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Intelligence')),
+    (SELECT `ID` FROM `superpower` WHERE spow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Intelligence')),
+    (SELECT `ID` FROM `superpower` WHERE spow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `superpower` WHERE pow='Mechanical Arms'));
+    (SELECT `ID` FROM `superpower` WHERE spow='Mechanical Arms'));
 
 INSERT INTO `person_person` ( `sp1_ID`,`sp2_ID`,`relationship` )
 VALUES ( 
