@@ -297,8 +297,8 @@ app.get('/view/person/:id', function(request, response) {
 
 	connection.query(viewPersonQ + viewPersonIncidentsQ /*+ viewPersonPowersQ*/, function(error, rows, fields) {
 		var person_data = {
-			person:rows[0]
-			incident:rows[1],
+			person:rows[0],
+			incident:rows[1]
 			// superpower:rows[2]
 		};
 
