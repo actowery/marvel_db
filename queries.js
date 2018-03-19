@@ -192,7 +192,7 @@ exports.deletePowerQ = "DELETE FROM power WHERE id = ";
 	Description: to display power list
 */
 exports.viewPowerViewQ  = "SELECT power.id AS power_id, "
-exports.viewPowerViewQ += "power.power;"
+exports.viewPowerViewQ += "power.pow;"
 
 /*
 	Name: viewPowerById
@@ -200,7 +200,7 @@ exports.viewPowerViewQ += "power.power;"
 */
 exports.viewPowerByIdQ  = "SELECT ";
 exports.viewPowerByIdQ += "power.id, ";
-exports.viewPowerByIdQ += "power.power ";
+exports.viewPowerByIdQ += "power.pow ";
 exports.viewPowerByIdQ += "WHERE power.id = ";
 
 /*
@@ -221,7 +221,7 @@ exports.removePowerFromCourseQ = "DELETE FROM person_power WHERE sp_id = ? AND p
 */
 exports.viewPowersByCourseQ =  "SELECT ";
 exports.viewPowersByCourseQ += "power.id AS power_id, ";
-exports.viewPowersByCourseQ += "power.power AS power_power, ";
+exports.viewPowersByCourseQ += "power.pow AS power_power, ";
 exports.viewPowersByCourseQ += "FROM power ";
 exports.viewPowersByCourseQ += "INNER JOIN person_power ON person_power.power_id = power.id ";
 
@@ -232,7 +232,7 @@ exports.viewPowersByCourseQ += "INNER JOIN person_power ON person_power.power_id
 exports.personsWithoutParticularPowerQ = "SELECT person_table.sp_id, person_table.person_name ";
 exports.personsWithoutParticularPowerQ += "FROM (SELECT id AS sp_id, name AS person_name ";
 exports.personsWithoutParticularPowerQ += "FROM person) as person_table ";
-exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT power.id AS power_id, power.power AS power_power, person_power.sp_id AS sp_id ";
+exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT power.id AS power_id, power.pow AS power_power, person_power.sp_id AS sp_id ";
 exports.personsWithoutParticularPowerQ += "FROM power ";
 exports.personsWithoutParticularPowerQ += "INNER JOIN person_power ";
 exports.personsWithoutParticularPowerQ += "ON person_power.power_id = power.id ";
