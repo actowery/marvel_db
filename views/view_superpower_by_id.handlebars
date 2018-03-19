@@ -2,26 +2,23 @@
 	<h1>Power Not Found</h1>
 {{else}}
 	{{#if superpower_data}}
-		<h2>Power Details <a href="/edit/superpower/{{superpower.superpower_id}}">Edit</a> <a href="/delete/superpower/{{superpower.superpower_id}}">Delete</a></h2>
-		<p><strong>Description</strong> {{superpower.superpower_pow}}</p>
+		<h2>Power Details <a href="/edit/superpower/{{superpower_data.superpower.superpower_id}}">Edit</a> <a href="/delete/superpower/{{superpower.superpower_id}}">Delete</a></h2>
+		<p><strong>Description</strong> {{superpower_data.superpower.superpower_superpower}}</p>
 
 		<br>
 		<h3>Add Power to Person</h3>
-		{{#if superpower.persons_without_current_superpower}}
-			<form action="/add/superpower/{{superpower.superpower_id}}/person" method="POST">
+			<form action="/add/superpower/{{superpower_data.superpower.superpower_id}}/person" method="POST">
 				<div class="form-group">
 					<label for="person">Person</label>
 					<select class="form-control" id="person" name="person">
-						{{#each superpower.persons_without_current_superpower}}
-							<option value="{{sp_ID}}">{{person_name}}</option>
-						{{/each}}
+						{{!--{{#each superpower_data.superpower.persons_without_current_superpower}}--}}
+						{{!--	<option value="{{sp_ID}}">{{person_name}}</option>--}}
+						{{!--{{/each}}--}}
 					</select>
 				</div>
 				<button type="submit" class="btn btn-default">Add Power to Person</button>
 			</form>
-		{{else}}
-			<p>There are no persons available for this superpower.</p>
-		{{/if}}
+
 	{{else}}
 		<h1>Power Not Found</h1>
 	{{/if}}
