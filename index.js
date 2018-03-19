@@ -284,7 +284,7 @@ app.post('/edit/person/:id', function(request, response) {
 
 //display table of persons
 app.get('/view/person', function(request, response) {
-	connection.query(queries.viewPersonViewQ, function(error, rows, fields) {
+	connection.query(queries.allPersons, function(error, rows, fields) {
 		response.render('view_person', {person:rows, error_message:error});
 	});
 });
