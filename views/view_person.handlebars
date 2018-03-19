@@ -8,7 +8,6 @@
 		<thead>
 			<tr>
 				<th>Alias</th>
-				<th>City</th>
 				<th>View</th>
 				<th>Edit</th>
 				<th>Delete</th>
@@ -18,7 +17,6 @@
 			{{#each person}}
 				<tr>
 					<td>{{name}}</td>			
-					<td><a href="/view/city/{{sp_CityID}}">{{name}}</a></td>
 					<td><a href="/view/person/{{ID}}">View</a></td>
 					<td><a href="/edit/person/{{ID}}">Edit</a></td>
 					<td><a href="/delete/person/{{ID}}">Delete</a></td>
@@ -26,7 +24,6 @@
 			{{/each}}
 			<tr>
 				<td>Spider-Man</td>
-				<td><a href="/view/city/1">New York City</a></td>
 				<td><a href="/view/person/1">View</a></td>
 				<td><a href="/edit/person/1">Edit<a/></td>
 				<td>N/A <strong style="color:red;">*</strong></td>
