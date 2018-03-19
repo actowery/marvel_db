@@ -292,13 +292,13 @@ app.get('/view/person', function(request, response) {
 //view person by id
 app.get('/view/person/:id', function(request, response) {
 	var viewPersonQ = queries.allPersons+" WHERE id =" + mysql.escape(request.params.id) +";";
-	// var viewPersonIncidentsQ = queries.allIncidents + " WHERE person.ID = " + mysql.escape(request.params.id) + " ORDER BY date;";
+	var viewPersonIncidentsQ = queries.joinIncidentAndPerson + " WHERE person_incident.sp_ID = " + mysql.escape(request.params.id) + " ORDER BY date;";
 	// var viewPersonPowersQ = queries.allPowers + " WHERE person.ID = " + mysql.escape(request.params.id) + " ORDER BY name;";
 
-	connection.query(viewPersonQ/* + viewPersonIncidentsQ + viewPersonPowersQ*/, function(error, rows, fields) {
+	connection.query(viewPersonQ + viewPersonIncidentsQ /*+ viewPersonPowersQ*/, function(error, rows, fields) {
 		var person_data = {
 			person:rows[0]
-			// incident:rows[1],
+			incident:rows[1],
 			// superpower:rows[2]
 		};
 
