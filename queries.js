@@ -189,8 +189,8 @@ exports.deletePowerQ = "DELETE FROM superpower WHERE id = ";
     Name: viewPowerViewQ
     Description: to display superpower list
 */
-exports.viewPowerViewQ  = "SELECT superpower.ID AS superpower_id, "
-exports.viewPowerViewQ += "superpower.spow;"
+exports.viewPowerViewQ  = "SELECT ID AS superpower_id, "
+exports.viewPowerViewQ += "spow FROM superpower;"
 
 /*
     Name: viewPowerById
