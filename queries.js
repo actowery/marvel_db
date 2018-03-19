@@ -9,12 +9,11 @@ exports.allIncidents = "SELECT * FROM incident";
 exports.joinIncidentAndPerson = "SELECT id, description, person_incident.sp_ID FROM incident INNER JOIN incident on incident.id = person_incident.sp_ID";
 /*
     Name:  viewIncidentQ
-    Description:  Returns all incidents with the main subjects, like who was responsible, city, and collateral
+    Description:  Returns all incidents with the main subjects, like who was responsible, city
 */
 exports.viewIncidentQ =  "SELECT ";
 exports.viewIncidentQ += "incident.ID AS in_ID, ";
 exports.viewIncidentQ += "description AS incident_description, ";
-exports.viewIncidentQ += "collateral AS incident_collateral, ";
 exports.viewIncidentQ += "city.ID AS city_ID, ";
 exports.viewIncidentQ += "city.name AS city_name ";
 exports.viewIncidentQ += "FROM incident ";
@@ -36,7 +35,7 @@ exports.viewIncidentByPersonQ += "WHERE person.ID = ";
 /*
     Name:  createIncidentQ
     Description:  Inserts new incident into the database.  It expects to be
-    passed an object containing a Incident Description, a city, collateral, and a person.
+    passed an object containing a Incident Description, a city, and a person.
 */
 exports.createIncidentQ = "INSERT INTO incident SET ?;";
 
