@@ -51,8 +51,8 @@ app.post('/add/incident', function(request, response) {
 
 //DELETE incident by id
 app.get('/delete/incident/:id', function(request, response) {
-	var deleteIncidentPersonQ = queries.deleteIncidentPersonQ + mysql.escape(request.params.ID);
-	var deleteIncidentQ = queries.deleteIncidentQ + mysql.escape(request.params.ID);
+	var deleteIncidentPersonQ = queries.deleteIncidentPersonQ + mysql.escape(request.params.id);
+	var deleteIncidentQ = queries.deleteIncidentQ + mysql.escape(request.params.id);
 
 	connection.query(deleteIncidentPersonQ, function(error, result) {
 		connection.query(deleteIncidentQ, function(error, result) {
@@ -63,7 +63,7 @@ app.get('/delete/incident/:id', function(request, response) {
 
 //edit form render
 app.get('/edit/incident/:id', function(request, response) {
-	var incidentQById = queries.allIncidents  + " WHERE incident.ID = " + request.params.ID + "; ";
+	var incidentQById = queries.allIncidents  + " WHERE incident.ID = " + request.params.id + "; ";
 	var cityQ = queries.allCitys + " ORDER BY name; ";
 	var personQ = queries.allPersons + " ORDER BY name; ";
 
@@ -86,8 +86,8 @@ app.post('/edit/incident/:id', function(request, response) {
 		person:request.body.person
 	};
 
-	connection.query(queries.updateIncidentQ, [incident, request.params.ID], function(error, result) {
-		response.redirect(302, '/view/incident/' + request.params.ID);
+	connection.query(queries.updateIncidentQ, [incident, request.params.id], function(error, result) {
+		response.redirect(302, '/view/incident/' + request.params.id);
 	});
 });
 
@@ -102,8 +102,8 @@ app.get('/view/incident', function(request, response) {
 
 //get incident by id
 app.get('/view/incident/:id', function(request, response) {
-	var viewIncidentQ = queries.viewIncidentQ + " WHERE incident.ID = " + mysql.escape(request.params.ID) + "; ";
-	var viewPersonsByIncidentQ = queries.viewPersonsByIncidentQ + " WHERE person_incident.in_ID = " + mysql.escape(request.params.ID) + " ORDER BY person_name; ";
+	var viewIncidentQ = queries.viewIncidentQ + " WHERE incident.ID = " + mysql.escape(request.params.id) + "; ";
+	var viewPersonsByIncidentQ = queries.viewPersonsByIncidentQ + " WHERE person_incident.in_ID = " + mysql.escape(request.params.id) + " ORDER BY person_name; ";
 
 	connection.query(viewIncidentQ + viewPersonsByIncidentQ, function(error, rows, fields) {
 		var incident_data = {
@@ -136,10 +136,10 @@ app.post('/add/city', function(request, response) {
 //delete city by id
 app.get('/delete/city/:id', function(request, response) {
 	//make sure city 1 stays
-	if (parseInt(request.params.ID, 10) !== 1) {
-		var makeIncidentCityUnaffiliated = queries.makeIncidentCityUnaffiliated + mysql.escape(request.params.ID) + "; ";
-		var makePersonCityUnaffiliated = queries.makePersonCityUnaffiliated + mysql.escape(request.params.ID) + "; ";
-		var deleteCityQ = queries.deleteCityQ + mysql.escape(request.params.ID) + "; ";
+	if (parseInt(request.params.id, 10) !== 1) {
+		var makeIncidentCityUnaffiliated = queries.makeIncidentCityUnaffiliated + mysql.escape(request.params.id) + "; ";
+		var makePersonCityUnaffiliated = queries.makePersonCityUnaffiliated + mysql.escape(request.params.id) + "; ";
+		var deleteCityQ = queries.deleteCityQ + mysql.escape(request.params.id) + "; ";
 
 		connection.query(makeIncidentCityUnaffiliated + makePersonCityUnaffiliated + deleteCityQ, function(error, result) {
 			response.redirect(302, '/view/city');
@@ -151,7 +151,7 @@ app.get('/delete/city/:id', function(request, response) {
 
 //edit city form
 app.get('/edit/city/:id', function(request, response) {
-	var cityQById = queries.allCitys + " WHERE id = " + mysql.escape(request.params.ID) + "; ";
+	var cityQById = queries.allCitys + " WHERE id = " + mysql.escape(request.params.id) + "; ";
 
 	connection.query(cityQById, function(error, rows, fields) {
 		var city_data = {
@@ -173,8 +173,8 @@ app.post('/edit/city/:id', function(request, response) {
 
 	var updateCityQ = queries.updateCityQ;
 
-	connection.query(updateCityQ, [city, request.params.ID], function(error, result) {
-		response.redirect(302, '/view/city/' + request.params.ID);
+	connection.query(updateCityQ, [city, request.params.id], function(error, result) {
+		response.redirect(302, '/view/city/' + request.params.id);
 	});
 });
 
@@ -189,9 +189,9 @@ app.get('/view/city', function(request, response) {
 
 //view by id
 app.get('/view/city/:id', function(request, response) {
-	var viewCityQ = queries.allCitys + " WHERE id = " + mysql.escape(request.params.ID) + "; ";
-	var viewPersonsByCity = queries.allPersons + " WHERE sp_CityID = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
-	var viewIncidentsByCity = queries.allIncidents + " WHERE in_CityID = " + mysql.escape(request.params.ID) + " ORDER BY id; ";
+	var viewCityQ = queries.allCitys + " WHERE id = " + mysql.escape(request.params.id) + "; ";
+	var viewPersonsByCity = queries.allPersons + " WHERE sp_CityID = " + mysql.escape(request.params.id) + "; ";
+	var viewIncidentsByCity = queries.allIncidents + " WHERE in_CityID = " + mysql.escape(request.params.id) + "; ";
 
 	connection.query(viewCityQ + viewPersonsByCity + viewIncidentsByCity, function(error, rows, fields) {
 		var city_data = {
@@ -237,10 +237,10 @@ app.post('/add/person', function(request, response) {
 //delete person
 app.get('/delete/person/:id', function(request, response) {
 	//dont let them delete 1, or the db wont work
-	if (parseInt(request.params.ID, 10) !== 1) {
-		var makePowerPersonUnassignedQ = queries.makePowerPersonUnassignedQ + mysql.escape(request.params.ID) + "; ";
-		var makeIncidentPersonUnassignedQ = queries.makeIncidentPersonUnassignedQ + mysql.escape(request.params.ID) + "; ";
-		var deletePersonQ = queries.deletePersonQ + mysql.escape(request.params.ID) + "; ";
+	if (parseInt(request.params.id, 10) !== 1) {
+		var makePowerPersonUnassignedQ = queries.makePowerPersonUnassignedQ + mysql.escape(request.params.id) + "; ";
+		var makeIncidentPersonUnassignedQ = queries.makeIncidentPersonUnassignedQ + mysql.escape(request.params.id) + "; ";
+		var deletePersonQ = queries.deletePersonQ + mysql.escape(request.params.id) + "; ";
 
 		connection.query(makePowerPersonUnassignedQ + makeIncidentPersonUnassignedQ + deletePersonQ, function(error, result) {
 			response.redirect(302, '/view/person');
@@ -252,7 +252,7 @@ app.get('/delete/person/:id', function(request, response) {
 
 //form to edit persons
 app.get('/edit/person/:id', function(request, response) {
-	var personByIdQ = queries.allPersons + " WHERE id = " + mysql.escape(request.params.ID) + "; ";
+	var personByIdQ = queries.allPersons + " WHERE id = " + mysql.escape(request.params.id) + "; ";
 	var allCitys = queries.allCitys + ";";
 	connection.query(personByIdQ + allCitys, function(error, rows, fields) {
 		var data = {
@@ -277,8 +277,8 @@ app.post('/edit/person/:id', function(request, response) {
 
 	var updatePersonQ = queries.updatePersonQ;
 
-	connection.query(updatePersonQ, [person, request.params.ID], function(error, result) {
-		response.redirect(302, '/view/person/' + request.params.ID);
+	connection.query(updatePersonQ, [person, request.params.id], function(error, result) {
+		response.redirect(302, '/view/person/' + request.params.id);
 	});
 });
 
@@ -291,9 +291,9 @@ app.get('/view/person', function(request, response) {
 
 //view person by id
 app.get('/view/person/:id', function(request, response) {
-	var viewPersonQ = queries.viewPersonQ + " WHERE person.ID = " + mysql.escape(request.params.ID) + ";";
-	var viewPersonIncidentsQ = queries.allIncidents + " WHERE person = " + mysql.escape(request.params.ID) + " ORDER BY date;";
-	var viewPersonPowersQ = queries.allPowers + " WHERE person = " + mysql.escape(request.params.ID) + " ORDER BY name;";
+	var viewPersonQ = queries.viewPersonQ + " WHERE person.ID = " + mysql.escape(request.params.id) + ";";
+	var viewPersonIncidentsQ = queries.allIncidents + " WHERE person = " + mysql.escape(request.params.id) + " ORDER BY date;";
+	var viewPersonPowersQ = queries.allPowers + " WHERE person = " + mysql.escape(request.params.id) + " ORDER BY name;";
 
 	connection.query(viewPersonQ + " " + viewPersonIncidentsQ + viewPersonPowersQ, function(error, rows, fields) {
 		var person_data = {
@@ -332,7 +332,7 @@ app.post('/add/superpower', function(request, response) {
 app.post('/add/superpower/:id/person', function(request, response) {
 	var person_superpower = {
 		sp_id:request.body.person,
-		superpower_id:request.params.ID
+		superpower_id:request.params.id
 	};
 
 	connection.query(queries.createPersonPowerQ, person_superpower, function(error, result) {
@@ -342,7 +342,7 @@ app.post('/add/superpower/:id/person', function(request, response) {
 
 //delete superpower by id
 app.get('/delete/superpower/:id', function(request, response) {
-	var deletePowerQ = queries.deletePowerQ + mysql.escape(request.params.ID) + ";";
+	var deletePowerQ = queries.deletePowerQ + mysql.escape(request.params.id) + ";";
 
 	connection.query(deletePowerQ, function(error, result) {
 		response.redirect(302, '/view/superpower');
@@ -351,7 +351,7 @@ app.get('/delete/superpower/:id', function(request, response) {
 
 //edit superpower by id
 app.get('/edit/superpower/:id', function(request, response) {
-	var superpowerQ = queries.allPowers + " WHERE id = " + request.params.ID + ";";
+	var superpowerQ = queries.allPowers + " WHERE id = " + request.params.id + ";";
 
 	connection.query(superpowerQ, function(error, rows, fields) {
 		var data = {
@@ -369,8 +369,8 @@ app.post('/edit/superpower/:id', function(request, response) {
 
 	};
 
-	connection.query(queries.updatePowerQ, [superpower, request.params.ID], function(error, result) {
-		response.redirect(302, '/view/superpower/' + request.params.ID);
+	connection.query(queries.updatePowerQ, [superpower, request.params.id], function(error, result) {
+		response.redirect(302, '/view/superpower/' + request.params.id);
 	});
 });
 
@@ -390,11 +390,11 @@ app.get('/view/superpower', function(request, response) {
 
 //display superpower by id
 app.get('/view/superpower/:id', function(request, response) {
-	var viewPowerByIdQ = queries.viewPowerByIdQ + mysql.escape(request.params.ID) + ";";
-	var viewPersonsByPowerQ = queries.viewIncidentByPowerQ + mysql.escape(request.params.ID) + " ORDER BY incident.date;";
+	var viewPowerByIdQ = queries.viewPowerByIdQ + mysql.escape(request.params.id) + ";";
+	var viewPersonsByPowerQ = queries.viewIncidentByPowerQ + mysql.escape(request.params.id) + " ORDER BY incident.date;";
 	var personsWithoutParticularPowerQ = queries.personsWithoutParticularPowerQ;
 
-	connection.query(viewPowerByIdQ + viewPersonsByPowerQ + personsWithoutParticularPowerQ, request.params.ID, function(error, rows, fields) {
+	connection.query(viewPowerByIdQ + viewPersonsByPowerQ + personsWithoutParticularPowerQ, request.params.id, function(error, rows, fields) {
 		if (rows[0].length > 0) {
 			var superpower_data = {
 				superpower_id:rows[0][0].id,
@@ -403,7 +403,7 @@ app.get('/view/superpower/:id', function(request, response) {
 				persons_without_current_superpower:rows[2]
 			};
 		} else {
-			error = "No superpower with ID of " + request.params.ID + ".";
+			error = "No superpower with ID of " + request.params.id + ".";
 		}
 
 		response.render('view_superpower_by_id', {superpower:superpower_data, error_message:error});
