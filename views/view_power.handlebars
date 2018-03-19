@@ -3,8 +3,8 @@
 	{{error_message}}
 
 {{else}}
-	<h3>Powers <a href="/add/power">Add New</a></h3>
-	{{#if power}}
+	<h3>Powers <a href="/add/superpower">Add New</a></h3>
+	{{#if superpower}}
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each power}}
+				{{#each superpower}}
 					<tr>
 						<td>{{pow}}</td>
 
@@ -22,6 +22,6 @@
 			</tbody>
 		</table>
 	{{else}}
-		<p>No powers currently in database. Click the link above to add one</p>
+		<p>No superpowers currently in database. Click the link above to add one</p>
 	{{/if}}
 {{/if}}

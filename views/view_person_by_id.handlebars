@@ -19,15 +19,15 @@
 			This person currently has no incidents on record.
 		{{/if}}
 		</p>
-		<p><strong>power: </strong>
-		{{#if person_data.power}}
+		<p><strong>superpower: </strong>
+		{{#if person_data.superpower}}
 			<ul>
-				{{#each person_data.power}}
-					<li><a href="/view/power/{{id}}">{{description}}</a></li>
+				{{#each person_data.superpower}}
+					<li><a href="/view/superpower/{{id}}">{{description}}</a></li>
 				{{/each}}
 			</ul>
 		{{else}}
-			This person currently has no powers... how are they a super person then?
+			This person currently has no superpowers... how are they a super person then?
 		{{/if}}
 		</p>
 	{{else}}

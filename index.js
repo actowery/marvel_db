@@ -224,7 +224,7 @@ app.post('/add/person', function(request, response) {
 		origin:request.body.origin,
 		villain:request.body.villain,
 		city:request.body.city,
-		power:request.body.power
+		superpower:request.body.superpower
 	};
 
 	var addPersonQ = queries.addPersonQ;
@@ -272,7 +272,7 @@ app.post('/edit/person/:id', function(request, response) {
 		origin:request.body.origin,
 		villain:request.body.villain,
 		city:request.body.city,
-		power:request.body.power
+		superpower:request.body.superpower
 	};
 
 	var updatePersonQ = queries.updatePersonQ;
@@ -299,15 +299,15 @@ app.get('/view/person/:id', function(request, response) {
 		var person_data = {
 			person:rows[0][0],
 			incident:rows[1],
-			power:rows[2]
+			superpower:rows[2]
 		};
 
 		response.render('view_person_by_id', {person_data:person_data, error_message:error});
 	});
 });
 
-//add power
-app.get('/add/power', function(request, response) {
+//add superpower
+app.get('/add/superpower', function(request, response) {
 	var personQ = queries.allPersons + " ORDER BY name;";
 
 	connection.query(personQ, function(error, rows, fields) {
@@ -315,98 +315,98 @@ app.get('/add/power', function(request, response) {
 			person:rows[0],
 		};
 
-		response.render('add_power', {form_data:data, error_message:error});
+		response.render('add_superpower', {form_data:data, error_message:error});
 	});
 });
-app.post('/add/power', function(request, response) {
-	var power = {
+app.post('/add/superpower', function(request, response) {
+	var superpower = {
 		description:request.body.description
 	};
 
-	connection.query(queries.createPowerQ, power, function(error, result) {
-		response.redirect(302, '/view/power');
+	connection.query(queries.createPowerQ, superpower, function(error, result) {
+		response.redirect(302, '/view/superpower');
 	});
 });
 
-//records powers owned by persons
-app.post('/add/power/:id/person', function(request, response) {
-	var person_power = {
+//records superpowers owned by persons
+app.post('/add/superpower/:id/person', function(request, response) {
+	var person_superpower = {
 		sp_id:request.body.person,
-		power_id:request.params.id
+		superpower_id:request.params.id
 	};
 
-	connection.query(queries.createPersonPowerQ, person_power, function(error, result) {
-		response.redirect(302, '/view/power/' + person_power.power_id);
+	connection.query(queries.createPersonPowerQ, person_superpower, function(error, result) {
+		response.redirect(302, '/view/superpower/' + person_superpower.superpower_id);
 	});
 });
 
-//delete power by id
-app.get('/delete/power/:id', function(request, response) {
+//delete superpower by id
+app.get('/delete/superpower/:id', function(request, response) {
 	var deletePowerQ = queries.deletePowerQ + mysql.escape(request.params.id) + ";";
 
 	connection.query(deletePowerQ, function(error, result) {
-		response.redirect(302, '/view/power');
+		response.redirect(302, '/view/superpower');
 	});
 });
 
-//edit power by id
-app.get('/edit/power/:id', function(request, response) {
-	var powerQ = queries.allPowers + " WHERE id = " + request.params.id + ";";
+//edit superpower by id
+app.get('/edit/superpower/:id', function(request, response) {
+	var superpowerQ = queries.allPowers + " WHERE id = " + request.params.id + ";";
 
-	connection.query(powerQ, function(error, rows, fields) {
+	connection.query(superpowerQ, function(error, rows, fields) {
 		var data = {
-			power:rows[0][0]
+			superpower:rows[0][0]
 		};
 
-		response.render('edit_power_by_id', {form_data:data, error_message:error});
+		response.render('edit_superpower_by_id', {form_data:data, error_message:error});
 	});
 });
 
-//contains data for editing of power
-app.post('/edit/power/:id', function(request, response) {
-	var power = {
+//contains data for editing of superpower
+app.post('/edit/superpower/:id', function(request, response) {
+	var superpower = {
 		description:request.body.description,
 
 	};
 
-	connection.query(queries.updatePowerQ, [power, request.params.id], function(error, result) {
-		response.redirect(302, '/view/power/' + request.params.id);
+	connection.query(queries.updatePowerQ, [superpower, request.params.id], function(error, result) {
+		response.redirect(302, '/view/superpower/' + request.params.id);
 	});
 });
 
-//remove by power by person id
-app.get('/remove/power/:power_id/person/:sp_id', function(request, response) {
-	connection.query(queries.removePowerFromPersonQ, [request.params.sp_id, request.params.power_id], function(error, result) {
-		response.redirect(302, '/view/power/' + request.params.power_id);
+//remove by superpower by person id
+app.get('/remove/superpower/:superpower_id/person/:sp_id', function(request, response) {
+	connection.query(queries.removePowerFromPersonQ, [request.params.sp_id, request.params.superpower_id], function(error, result) {
+		response.redirect(302, '/view/superpower/' + request.params.superpower_id);
 	});
 });
 
-//displays a table of power descriptions
-app.get('/view/power', function(request, response) {
+//displays a table of superpower descriptions
+app.get('/view/superpower', function(request, response) {
 	connection.query(queries.viewPowerViewQ, function(error, rows, fields) {
-		response.render('view_power', {power:rows, error_message:error});
+		response.render('view_superpower', {superpower:rows, error_message:error});
 	});
 });
 
-//display power by id
-app.get('/view/power/:id', function(request, response) {
+//display superpower by id
+app.get('/view/superpower/:id', function(request, response) {
 	var viewPowerByIdQ = queries.viewPowerByIdQ + mysql.escape(request.params.id) + ";";
 	var viewPersonsByPowerQ = queries.viewIncidentByPowerQ + mysql.escape(request.params.id) + " ORDER BY incident.date;";
 	var personsWithoutParticularPowerQ = queries.personsWithoutParticularPowerQ;
 
 	connection.query(viewPowerByIdQ + viewPersonsByPowerQ + personsWithoutParticularPowerQ, request.params.id, function(error, rows, fields) {
 		if (rows[0].length > 0) {
-			var power_data = {
-				power_id:rows[0][0].id,
-				power_power:rows[0][0].description,
+			var superpower_data = {
+				superpower_id:rows[0][0].id,
+				superpower_superpower:rows[0][0].description,
 				person:rows[1],
-				persons_without_current_power:rows[2]
+				persons_without_current_superpower:rows[2]
 			};
 		} else {
-			error = "No power with ID of " + request.params.id + ".";
+			error = "No superpower with ID of " + request.params.id + ".";
 		}
 
-		response.render('view_power_by_id', {power:power_data, error_message:error});
+		response.render('view_superpower_by_id', {superpower:superpower_data, error_message:error});
 	});
 
 });

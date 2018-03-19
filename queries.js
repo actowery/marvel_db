@@ -125,9 +125,9 @@ exports.deletePersonQ = "DELETE FROM person WHERE id = ";
 
 /*
     Name: makePowerPersonUnassignedQ
-    Description:  makes sure powers are not orphaned when 
+    Description:  makes sure superpowers are not orphaned when 
 */
-exports.PowerPersonUnassignedQ = "UPDATE power SET person = 1 WHERE person = ";
+exports.PowerPersonUnassignedQ = "UPDATE superpower SET person = 1 WHERE person = ";
 
 /*
     Name: makeCoursePersonUnassignedQ
@@ -166,81 +166,81 @@ exports.viewPersonQ += "INNER JOIN city ON city.ID = person.sp_CityID ";
 
 
 
-//powers
+//superpowers
 /*
     Name: allPowers
-    Description:  returns all powers
+    Description:  returns all superpowers
 */
-exports.allPowers = "SELECT * FROM power";
+exports.allPowers = "SELECT * FROM superpower";
 
 /*
     Name: createPowerQ
-    Description:  creates power
+    Description:  creates superpower
 */
-exports.createPowerQ = "INSERT INTO power SET ?;"
+exports.createPowerQ = "INSERT INTO superpower SET ?;"
 
 /*
     Name: deletePowerQ
-    Description:  deletes power
+    Description:  deletes superpower
 */
-exports.deletePowerQ = "DELETE FROM power WHERE id = ";
+exports.deletePowerQ = "DELETE FROM superpower WHERE id = ";
 
 /*
     Name: viewPowerViewQ
-    Description: to display power list
+    Description: to display superpower list
 */
-exports.viewPowerViewQ  = "SELECT power.id AS power_id, "
-exports.viewPowerViewQ += "power.pow;"
+exports.viewPowerViewQ  = "SELECT superpower.id AS superpower_id, "
+exports.viewPowerViewQ += "superpower.pow;"
 
 /*
     Name: viewPowerById
-    Description: returns power by id
+    Description: returns superpower by id
 */
 exports.viewPowerByIdQ  = "SELECT ";
-exports.viewPowerByIdQ += "power.id, ";
-exports.viewPowerByIdQ += "power.pow ";
-exports.viewPowerByIdQ += "WHERE power.id = ";
+exports.viewPowerByIdQ += "superpower.id, ";
+exports.viewPowerByIdQ += "superpower.pow ";
+exports.viewPowerByIdQ += "WHERE superpower.id = ";
 
 /*
     Q: updatePowerQ
-    Description: updates power given new params
+    Description: updates superpower given new params
 */
-exports.updatePowerQ = "UPDATE power SET ? WHERE id = ?";
+exports.updatePowerQ = "UPDATE superpower SET ? WHERE id = ?";
 
 /*
     Q: removePowerFromPersonQ
-    Description: removes a power from a person
+    Description: removes a superpower from a person
 */
-exports.removePowerFromCourseQ = "DELETE FROM person_power WHERE sp_id = ? AND power_id = ?;";
+exports.removePowerFromCourseQ = "DELETE FROM person_superpower WHERE sp_id = ? AND superpower_id = ?;";
 
 /*
     Name: viewPowersByPersonQ
-    Description:  displays powers by person
+    Description:  displays superpowers by person
 */
 exports.viewPowersByCourseQ =  "SELECT ";
-exports.viewPowersByCourseQ += "power.id AS power_id, ";
-exports.viewPowersByCourseQ += "power.pow AS power_power, ";
-exports.viewPowersByCourseQ += "FROM power ";
-exports.viewPowersByCourseQ += "INNER JOIN person_power ON person_power.power_id = power.id ";
+exports.viewPowersByCourseQ += "superpower.id AS superpower_id, ";
+exports.viewPowersByCourseQ += "superpower.pow AS superpower_superpower, ";
+exports.viewPowersByCourseQ += "FROM superpower ";
+exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.id ";
 
 /*
     Name: PersonsWithoutParticularPowerQ
-    Description: to generate eligible people for powers
+    Description: to generate eligible people for superpowers
 */
 exports.personsWithoutParticularPowerQ = "SELECT person_table.sp_id, person_table.person_name ";
 exports.personsWithoutParticularPowerQ += "FROM (SELECT id AS sp_id, name AS person_name ";
 exports.personsWithoutParticularPowerQ += "FROM person) as person_table ";
-exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT power.id AS power_id, power.pow AS power_power, person_power.sp_id AS sp_id ";
-exports.personsWithoutParticularPowerQ += "FROM power ";
-exports.personsWithoutParticularPowerQ += "INNER JOIN person_power ";
-exports.personsWithoutParticularPowerQ += "ON person_power.power_id = power.id ";
-exports.personsWithoutParticularPowerQ += "WHERE power.id = ?) as power_table ";
-exports.personsWithoutParticularPowerQ += "ON power_table.sp_id = person_table.sp_id ";
-exports.personsWithoutParticularPowerQ += "WHERE power_id IS NULL ";
+exports.personsWithoutParticularPowerQ += "LEFT JOIN (SELECT superpower.id AS superpower_id, superpower.pow AS superpower_superpower, person_superpower.sp_id AS sp_id ";
+exports.personsWithoutParticularPowerQ += "FROM superpower ";
+exports.personsWithoutParticularPowerQ += "INNER JOIN person_superpower ";
+exports.personsWithoutParticularPowerQ += "ON person_superpower.superpower_id = superpower.id ";
+exports.personsWithoutParticularPowerQ += "WHERE superpower.id = ?) as superpower_table ";
+exports.personsWithoutParticularPowerQ += "ON superpower_table.sp_id = person_table.sp_id ";
+exports.personsWithoutParticularPowerQ += "WHERE superpower_id IS NULL ";
 exports.personsWithoutParticularPowerQ += "ORDER BY person_table.person_name;";
 
 /*
     Name: createCoursePowerQ
     Description: inserts a new course
 */
-exports.createCoursePowerQ = "INSERT INTO course_power SET ?";
+exports.createCoursePowerQ = "INSERT INTO course_superpower SET ?";

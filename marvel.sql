@@ -1,12 +1,12 @@
 -------Entity Tables------------------------------------
 DROP TABLE IF EXISTS `person`;
-DROP TABLE IF EXISTS `power`;
+DROP TABLE IF EXISTS `superpower`;
 DROP TABLE IF EXISTS `city`;
 DROP TABLE IF EXISTS `incident`;
 
 
 
-CREATE TABLE power (
+CREATE TABLE superpower (
     `ID` INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
     `pow` VARCHAR( 225  ) NOT NULL
 ) ENGINE = INNODB
@@ -40,7 +40,7 @@ CREATE TABLE incident (
 
 -------Relationship Tables---------------------------------
 DROP TABLE IF EXISTS `person_person`;
-DROP TABLE IF EXISTS `person_power`;
+DROP TABLE IF EXISTS `person_superpower`;
 DROP TABLE IF EXISTS `person_incident`;
 
 CREATE TABLE person_person (
@@ -51,11 +51,11 @@ CREATE TABLE person_person (
     PRIMARY KEY ( `sp1_ID`,`sp2_ID` )
 ) ENGINE = INNODB;
 
-CREATE TABLE person_power (
+CREATE TABLE person_superpower (
     `sp_ID` INT( 11 ),
-    `power_ID` INT( 11 ),
-    UNIQUE ( `sp_ID`, `power_ID` ),
-    PRIMARY KEY ( `sp_ID`,`power_ID` )
+    `superpower_ID` INT( 11 ),
+    UNIQUE ( `sp_ID`, `superpower_ID` ),
+    PRIMARY KEY ( `sp_ID`,`superpower_ID` )
 ) ENGINE = INNODB;
 
 CREATE TABLE person_incident (
@@ -71,23 +71,23 @@ VALUES ( 'New York City', '302', '8537673' );
 INSERT INTO `person` (`name`,`real_name`,`origin`,`villain`,`sp_CityID`)
 VALUES ( 'Spider-Man','Peter Parker','Bitten by a mutated spider receiving superhuman, spider-themed abilities.','false',(SELECT `ID` from `city` WHERE name = 'New York City')), ('Dr. Octopus','Otto Octavious','Experimental mechanical arm implant made him crazy.','true', (SELECT `ID` from `city` WHERE name = 'New York City'));
 
-INSERT INTO `power` ( `pow`)
+INSERT INTO `superpower` ( `pow`)
 VALUES ( 'Super Strength' ), ( 'Wall Crawl' ), ( 'Web Shooting' ), ( 'Spider Sense' ), ( 'Intelligence' ), ( 'Mechanical Arms' );
 
-INSERT INTO `person_power` ( `sp_ID`, `power_ID` )
+INSERT INTO `person_superpower` ( `sp_ID`, `superpower_ID` )
 VALUES ( 
     (SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE pow='Super Strength')),
+    (SELECT `ID` FROM `superpower` WHERE pow='Super Strength')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE pow='Wall Crawl')),
+    (SELECT `ID` FROM `superpower` WHERE pow='Wall Crawl')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE pow='Web Shooting')),
+    (SELECT `ID` FROM `superpower` WHERE pow='Web Shooting')),
     ((SELECT `ID` FROM `person` WHERE name='Spider-Man'),
-    (SELECT `ID` FROM `power` WHERE pow='Intelligence')),
+    (SELECT `ID` FROM `superpower` WHERE pow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `power` WHERE pow='Intelligence')),
+    (SELECT `ID` FROM `superpower` WHERE pow='Intelligence')),
     ((SELECT `ID` FROM `person` WHERE name='Dr. Octopus'),
-    (SELECT `ID` FROM `power` WHERE pow='Mechanical Arms'));
+    (SELECT `ID` FROM `superpower` WHERE pow='Mechanical Arms'));
 
 INSERT INTO `person_person` ( `sp1_ID`,`sp2_ID`,`relationship` )
 VALUES ( 
