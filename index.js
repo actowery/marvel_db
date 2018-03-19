@@ -238,11 +238,9 @@ app.post('/add/person', function(request, response) {
 app.get('/delete/person/:id', function(request, response) {
 	//dont let them delete 1, or the db wont work
 	if (parseInt(request.params.id, 10) !== 1) {
-		var makePowerPersonUnassignedQ = queries.makePowerPersonUnassignedQ + mysql.escape(request.params.id) + "; ";
-		var makeIncidentPersonUnassignedQ = queries.makeIncidentPersonUnassignedQ + mysql.escape(request.params.id) + "; ";
-		var deletePersonQ = queries.deletePersonQ + mysql.escape(request.params.id) + "; ";
+	var deletePersonQ = queries.deletePersonQ + mysql.escape(request.params.id) + "; ";
 
-		connection.query(makePowerPersonUnassignedQ + makeIncidentPersonUnassignedQ + deletePersonQ, function(error, result) {
+		connection.query(deletePersonQ, function(error, result) {
 			response.redirect(302, '/view/person');
 		});
 	} else {
