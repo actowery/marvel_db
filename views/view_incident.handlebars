@@ -10,7 +10,6 @@
 				<tr>
 					<th>Description</th>
 					<th>City</th>
-					<th>Person(s) Involved</th>
 					<th>View</th>
 					<th>Edit</th>
 					<th>Delete</th>
@@ -21,11 +20,7 @@
 					<tr>
 						<td>{{incident_description}}</td>
 						<td><a href="/view/city/{{in_CityID}}">{{city_name}}</a></td>
-						<td>
-							{{each person}}
-							<a href="/view/person/{{ID}}">{{name}} Villain? {{villain}}</a><br>
-							{{/each}}
-						</td>
+
 						<td><a href="/view/incident/{{ID}}">View</a></td>
 						<td><a href="/edit/incident/{{ID}}">Edit</a></td>
 						<td><a href="/delete/incident/{{ID}}">Delete</a></td>
