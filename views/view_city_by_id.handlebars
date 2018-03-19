@@ -3,7 +3,7 @@
 	<p><a href="/view/city">Go back</a></p>
 {{else}}
 	{{#if city_data.city}}
-		<h2>City Details <a href="/edit/city/{{city_data.city.ID}}">Edit</a> <a href="/delete/city/{{city_data.city.ID}}">Delete</a></h2>
+		<h2>City Details <a href="/edit/city/{{city_data.city.ID}}">Edit</a></h2>
 		<p><strong>Name:</strong> {{city_data.city.name}}</p>
 		<p><strong>Persons in City:</strong>
 		{{#if city_data.person}}
