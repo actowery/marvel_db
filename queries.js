@@ -152,15 +152,14 @@ exports.viewPersonViewQ += "ORDER BY person.name, city.name;";
     Description:  helps render more info for persons
 */
 exports.viewPersonQ =  "SELECT ";
-exports.viewPersonQ += "person.ID AS sp_ID, "
-exports.viewPersonQ += "person.name AS person_name, "
-exports.viewPersonQ += "person.real_name AS person_real_name, "
-exports.viewPersonQ += "person.origin AS person_origin, "
-exports.viewPersonQ += "person.villain AS person_villain, "
-exports.viewPersonQ += "city.name AS city_name "
-exports.viewPersonQ += "FROM person "
+exports.viewPersonQ += "person.ID AS sp_ID, ";
+exports.viewPersonQ += "person.name AS person_name, ";
+exports.viewPersonQ += "person.real_name AS person_real_name, ";
+exports.viewPersonQ += "person.origin AS person_origin, ";
+exports.viewPersonQ += "person.villain AS person_villain, ";
+exports.viewPersonQ += "city.name AS city_name ";
+exports.viewPersonQ += "FROM person ";
 exports.viewPersonQ += "INNER JOIN city ON city.ID = person.sp_CityID ";
-
 
 
 //superpowers
