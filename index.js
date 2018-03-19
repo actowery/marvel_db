@@ -222,8 +222,8 @@ app.post('/add/person', function(request, response) {
 		name:request.body.name,
 		real_name:request.body.real_name,
 		origin:request.body.origin,
-		villain:request.body.villain
-		// city:request.body.city,
+		villain:request.body.villain,
+		sp_CityID:request.body.sp_CityID
 		// superpower:request.body.superpower
 	};
 
@@ -298,8 +298,8 @@ app.get('/view/person/:id', function(request, response) {
 	connection.query(viewPersonQ+ " "/* + viewPersonIncidentsQ + viewPersonPowersQ*/, function(error, rows, fields) {
 		var person_data = {
 			person:rows[0],
-			incident:rows[1],
-			superpower:rows[2]
+			// incident:rows[1],
+			// superpower:rows[2]
 		};
 
 		response.render('view_person_by_id', {person_data:person_data, error_message:error});
