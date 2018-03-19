@@ -41,7 +41,7 @@ app.post('/add/incident', function(request, response) {
 	var incident = {
 		description:request.body.description,
 		city:request.body.city,
-		person:request.body.person
+		good_wins:request.body.good_wins
 	};
 
 	connection.query(queries.createIncidentQ, incident, function(error, result) {
