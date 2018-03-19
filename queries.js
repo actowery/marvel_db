@@ -11,7 +11,7 @@ exports.allIncidents = "SELECT * FROM incident";
     Description:  Returns all incidents with the main subjects, like who was responsible, city, and collateral
 */
 exports.viewIncidentQ =  "SELECT ";
-exports.viewIncidentQ += "ID AS in_ID, ";
+exports.viewIncidentQ += "incident.ID AS in_ID, ";
 exports.viewIncidentQ += "description AS incident_description, ";
 exports.viewIncidentQ += "collateral AS incident_collateral, ";
 exports.viewIncidentQ += "city.ID AS city_ID, ";
