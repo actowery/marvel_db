@@ -8,7 +8,7 @@
 	<div class="form-group">
 		<label for="city">City</label>
 		<select class="form-control" id="city" name="city">
-			{{#each form_data.citys}}
+			{{#each form_data.city}}
 				<option value="{{id}}">{{name}}</option>
 			{{/each}}
 		</select>
@@ -16,7 +16,7 @@
 	<div class="form-group">
 		<label for="person">Person</label>
 		<select class="form-control" id="person" name="person">
-			{{#each form_data.persons}}
+			{{#each form_data.person}}
 				<option value="{{id}}">{{name}}</option>
 			{{/each}}
 		</select>
