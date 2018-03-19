@@ -392,9 +392,8 @@ app.get('/view/superpower', function(request, response) {
 app.get('/view/superpower/:id', function(request, response) {
 	var viewPowerByIdQ = queries.viewPowerByIdQ + mysql.escape(request.params.id) + ";";
 	var viewPersonsByPowerQ = queries.viewIncidentByPowerQ + mysql.escape(request.params.id) + ";";
-	var personsWithoutParticularPowerQ = queries.personsWithoutParticularPowerQ;
 
-	connection.query(viewPowerByIdQ + viewPersonsByPowerQ + personsWithoutParticularPowerQ, request.params.id, function(error, rows, fields) {
+	connection.query(viewPowerByIdQ + viewPersonsByPowerQ, request.params.id, function(error, rows, fields) {
 		if (rows[0].length > 0) {
 			var superpower_data = {
 				superpower_id:rows[0][0].id,
