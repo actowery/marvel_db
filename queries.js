@@ -127,7 +127,7 @@ exports.deletePersonQ = "DELETE FROM person WHERE id = ";
 exports.PowerPersonUnassignedQ = "UPDATE superpower SET person = 1 WHERE person = ";
 
 /*
-    Name: makeCoursePersonUnassignedQ
+    Name: makePersonPersonUnassignedQ
     Description:  ensures incidents arent orphaned when persons are deleted
 */
 exports.makeIncidentPersonUnassignedQ = "UPDATE incident SET person = 1 WHERE person = ";
@@ -207,17 +207,17 @@ exports.updatePowerQ = "UPDATE superpower SET ? WHERE id = ?";
     Q: removePowerFromPersonQ
     Description: removes a superpower from a person
 */
-exports.removePowerFromCourseQ = "DELETE FROM person_superpower WHERE sp_id = ? AND superpower_id = ?;";
+exports.removePowerFromPersonQ = "DELETE FROM person_superpower WHERE sp_id = ? AND superpower_id = ?;";
 
 /*
     Name: viewPowersByPersonQ
     Description:  displays superpowers by person
 */
-exports.viewPowersByCourseQ =  "SELECT ";
-exports.viewPowersByCourseQ += "superpower.ID AS superpower_id, ";
-exports.viewPowersByCourseQ += "superpower.spow AS superpower_superpower, ";
-exports.viewPowersByCourseQ += "FROM superpower ";
-exports.viewPowersByCourseQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.ID ";
+exports.viewPowersByPersonQ =  "SELECT ";
+exports.viewPowersByPersonQ += "superpower.ID AS superpower_id, ";
+exports.viewPowersByPersonQ += "superpower.spow AS superpower_superpower, ";
+exports.viewPowersByPersonQ += "FROM superpower ";
+exports.viewPowersByPersonQ += "INNER JOIN person_superpower ON person_superpower.superpower_id = superpower.ID ";
 
 /*
     Name: PersonsWithoutParticularPowerQ
@@ -236,7 +236,7 @@ exports.personsWithoutParticularPowerQ += "WHERE superpower_id IS NULL ";
 exports.personsWithoutParticularPowerQ += "ORDER BY person_table.person_name;";
 
 /*
-    Name: createCoursePowerQ
+    Name: createPersonPowerQ
     Description: inserts a new course
 */
-exports.createCoursePowerQ = "INSERT INTO course_superpower SET ?";
+exports.createPersonPowerQ = "INSERT INTO course_superpower SET ?";

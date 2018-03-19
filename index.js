@@ -391,7 +391,7 @@ app.get('/view/superpower', function(request, response) {
 //display superpower by id
 app.get('/view/superpower/:id', function(request, response) {
 	var viewPowerByIdQ = queries.viewPowerByIdQ + mysql.escape(request.params.id) + ";";
-	var viewPersonsByPowerQ = queries.viewIncidentByPowerQ + mysql.escape(request.params.id) + ";";
+	var viewPersonsByPowerQ = queries.viewPowersByPersonQ + mysql.escape(request.params.id) + ";";
 
 	connection.query(viewPowerByIdQ + viewPersonsByPowerQ, request.params.id, function(error, rows, fields) {
 		if (rows[0].length > 0) {
