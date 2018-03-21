@@ -1,0 +1,40 @@
+{{#if error_message}}
+	<p>Error Loading Content</p>
+	{{error_message}}
+{{else}}
+	<h3>Persons <a href="/add/person">Add New</a></h3>
+	<table class="table table-bordered table-hover">
+		Search people by name:
+		<form action="/search/" method="POST">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name" name="name">
+			
+			</select>
+			<button type="submit" class="btn btn-default">Add Person</button>
+		</form>
+		<thead>
+			<tr>
+				<th>Alias</th>
+				<th>View</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each person}}
+				<tr>
+					<td>{{name}}</td>			
+					<td><a href="/view/person/{{ID}}">View</a></td>
+					<td><a href="/edit/person/{{ID}}">Edit</a></td>
+					<td><a href="/delete/person/{{ID}}">Delete</a></td>
+				</tr>
+			{{/each}}
+			<tr>
+				<td>Spider-Man</td>
+				<td><a href="/view/person/1">View</a></td>
+				<td><a href="/edit/person/1">Edit<a/></td>
+				<td>N/A <strong style="color:red;">*</strong></td>
+			</tr>
+		</tbody>
+	</table>
+{{/if}}
