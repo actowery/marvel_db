@@ -4,6 +4,16 @@
 {{else}}
 	<h3>Persons <a href="/add/person">Add New</a></h3>
 	<table class="table table-bordered table-hover">
+		Search people by city:
+		<form action="/citysearch/" method="POST">
+			<label for="citysearch">City</label>
+			<select class="form-control" id="citysearch" name="citysearch">
+				{{#each city}}
+					<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+			<button type="submit" class="btn btn-default">Add Person</button>
+		</form>
 		<thead>
 			<tr>
 				<th>Alias</th>

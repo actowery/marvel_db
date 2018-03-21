@@ -138,6 +138,7 @@ exports.makeIncidentPersonUnassignedQ = "UPDATE incident SET person = 1 WHERE pe
 */
 exports.updatePersonQ = "UPDATE person SET ? WHERE id = ?;";
 
+exports.cityFilter = "SELECT * from person WHERE id = ";
 /*
     Name: viewPersonViewQ
     Description:  helps render persons

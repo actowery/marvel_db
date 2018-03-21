@@ -48,7 +48,18 @@ app.post('/add/incident', function(request, response) {
 		response.redirect(302, '/view/incident');
 	});
 });
-
+app.post('/search', function(request, response) {
+		var city = request.body.name;
+		var cityFilter = queries.nameFilter + name + ";";
+		connection.query(queries.allPersons, function(error, rows, fields) {
+		response.render('/search', {person:rows, error_message:error});
+	});
+	};
+//////////////////////////////////////////////////////////////////////////////////////
+	connection.query(queries.createIncidentQ, incident, function(error, result) {
+		response.redirect(302, '/view/incident');
+	});
+});
 //DELETE incident by id
 app.get('/delete/incident/:id', function(request, response) {
 	var deleteIncidentPersonQ = queries.deleteIncidentPersonQ + mysql.escape(request.params.id);
@@ -283,6 +294,13 @@ app.post('/edit/person/:id', function(request, response) {
 //display table of persons
 app.get('/view/person', function(request, response) {
 	connection.query(queries.allPersons, function(error, rows, fields) {
+		response.render('view_person', {person:rows, error_message:error});
+	});
+});
+//////////////////////////////filter
+app.get('/search', function(request, response) {
+	var nameFilter = queries.nameFilter;
+	connection.query(nameFilter, [name], function(error, rows, fields) {
 		response.render('view_person', {person:rows, error_message:error});
 	});
 });
