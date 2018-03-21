@@ -4,10 +4,10 @@
 {{else}}
 	<h3>Persons <a href="/add/person">Add New</a></h3>
 	<table class="table table-bordered table-hover">
-		Search people by city:
-		<form action="/citysearch/" method="POST">
+		Search people by name:
+		<form action="/search/" method="POST">
 			<label for="citysearch">City</label>
-			<select class="form-control" id="citysearch" name="citysearch">
+			<select class="form-control" id="search" name="search">
 				{{#each city}}
 					<option value="{{id}}">{{name}}</option>
 				{{/each}}
