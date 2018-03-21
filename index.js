@@ -55,7 +55,11 @@ app.post('/search', function(request, response) {
 		response.render('/search', {person:rows, error_message:error});
 });
 
-
+//////////////////////////////////////////////////////////////////////////////////////
+	connection.query(queries.createIncidentQ, incident, function(error, result) {
+		response.redirect(302, '/view/incident');
+	});
+});
 //DELETE incident by id
 app.get('/delete/incident/:id', function(request, response) {
 	var deleteIncidentPersonQ = queries.deleteIncidentPersonQ + mysql.escape(request.params.id);
@@ -295,9 +299,12 @@ app.get('/view/person', function(request, response) {
 });
 //////////////////////////////filter
 app.get('/search', function(request, response) {
-	var nameFilter = queries.nameFilter;
-	connection.query(nameFilter, [name], function(error, rows, fields) {
-		response.render('search', {person:rows, error_message:error});
+	var nameFilter = queries.nameFilter + request.params.name +";";
+	connection.query(nameFilter, function(error, rows, fields) {
+		var person_data = {
+			person:rows[0]
+		};
+		response.render('view_person', {person:rows, error_message:error});
 	});
 });
 
