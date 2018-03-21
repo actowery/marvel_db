@@ -301,7 +301,7 @@ app.get('/view/person', function(request, response) {
 app.get('/search', function(request, response) {
 	var nameFilter = queries.nameFilter;
 	connection.query(nameFilter, [name], function(error, rows, fields) {
-		response.render('view_person', {person:rows, error_message:error});
+		response.render('/search', {person:rows, error_message:error});
 	});
 });
 
