@@ -290,13 +290,14 @@ app.get('/view/person', function(request, response) {
 app.get('/search', function(request, response) {
 	var nameFilter = queries.nameFilter + request.params.name +";";
 	connection.query(nameFilter, function(error, rows, fields) {
-		var person_data = {
+		var person = {
 			person:rows[0]
 		};
 		response.redirect('view_person', {person:rows, error_message:error});
 	});
 });
 app.post('/search', function(request, response) {
+		var person = {name:request.body.name}
 		var name = request.body.name;
 		var nameFilter = queries.nameFilter + name + ";";
 		connection.query(queries.nameFilter, person, function(error, rows, fields) {
