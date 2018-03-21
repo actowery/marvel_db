@@ -52,7 +52,7 @@ app.post('/search', function(request, response) {
 		var name = request.body.name;
 		var nameFilter = queries.nameFilter + name + ";";
 		connection.query(queries.namrFilter, function(error, rows, fields) {
-		response.render('search', {person:rows, error_message:error});
+		response.render('view_person', {person:rows, error_message:error});
 });
 
 //////////////////////////////////////////////////////////////////////////////////////
