@@ -49,12 +49,12 @@ app.post('/add/incident', function(request, response) {
 	});
 });
 app.post('/search', function(request, response) {
-		var city = request.body.name;
-		var cityFilter = queries.nameFilter + name + ";";
-		connection.query(queries.allPersons, function(error, rows, fields) {
+		var name = request.body.name;
+		var nameFilter = queries.nameFilter + name + ";";
+		connection.query(queries.namrFilter, function(error, rows, fields) {
 		response.render('/search', {person:rows, error_message:error});
-	});
-	};
+});
+
 //////////////////////////////////////////////////////////////////////////////////////
 	connection.query(queries.createIncidentQ, incident, function(error, result) {
 		response.redirect(302, '/view/incident');
