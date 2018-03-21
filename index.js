@@ -48,18 +48,7 @@ app.post('/add/incident', function(request, response) {
 		response.redirect(302, '/view/incident');
 	});
 });
-app.post('/search', function(request, response) {
-		var name = request.body.name;
-		var nameFilter = queries.nameFilter + name + ";";
-		connection.query(queries.namrFilter, function(error, rows, fields) {
-		response.render('view_person', {person:rows, error_message:error});
-});
 
-//////////////////////////////////////////////////////////////////////////////////////
-	connection.query(queries.createIncidentQ, incident, function(error, result) {
-		response.redirect(302, '/view/incident');
-	});
-});
 //DELETE incident by id
 app.get('/delete/incident/:id', function(request, response) {
 	var deleteIncidentPersonQ = queries.deleteIncidentPersonQ + mysql.escape(request.params.id);
@@ -304,10 +293,19 @@ app.get('/search', function(request, response) {
 		var person_data = {
 			person:rows[0]
 		};
-		response.render('view_person', {person:rows, error_message:error});
+		response.redirect('view_person', {person:rows, error_message:error});
 	});
 });
+app.post('/search', function(request, response) {
+		var name = request.body.name;
+		var nameFilter = queries.nameFilter + name + ";";
+		connection.query(queries.nameFilter, person, function(error, rows, fields) {
+		response.render('view_person', {person:rows, error_message:error});
+		});
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+});
 //view person by id
 app.get('/view/person/:id', function(request, response) {
 	var viewPersonQ = queries.allPersons+" WHERE id =" + mysql.escape(request.params.id) +";";
